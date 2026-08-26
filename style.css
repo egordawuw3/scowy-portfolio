@@ -200,7 +200,6 @@ button{font-family:var(--font);cursor:pointer}
     .nav__burger{display:flex}
     .works__grid{grid-template-columns:repeat(2,1fr)}
     .cases__list{grid-template-columns:1fr}
-    .why-me__grid{grid-template-columns:1fr}
     .hero__actions{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:480px){
