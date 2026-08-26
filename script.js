@@ -5,7 +5,66 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideoPlayers();
     initScrollAnimations();
     initSmoothScroll();
+    initCountUp();
+    initAccordion();
 });
+
+function initAccordion() {
+    const items = document.querySelectorAll('.accordion__item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+        const trigger = item.querySelector('.accordion__trigger');
+        const panel = item.querySelector('.accordion__panel');
+        trigger.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            items.forEach(other => {
+                other.classList.remove('active');
+                other.querySelector('.accordion__panel').style.maxHeight = null;
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+        });
+    });
+}
+
+function initCountUp() {
+    const els = document.querySelectorAll('.case__stat-value');
+    if (!els.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const raw = el.textContent.trim();
+            const match = raw.match(/^(\d+(?:[.,]\d+)?)(\D*)$/);
+            if (!match) return;
+
+            const target = parseFloat(match[1].replace(',', '.'));
+            const suffix = match[2];
+            const isInt = !match[1].includes('.') && !match[1].includes(',');
+            const duration = 1100;
+            const start = performance.now();
+
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const value = target * eased;
+                el.textContent = (isInt ? Math.round(value) : value.toFixed(1)) + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+                else el.textContent = raw;
+            }
+            requestAnimationFrame(tick);
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.6 });
+
+    els.forEach(el => observer.observe(el));
+}
 
 function initWorksTabs() {
     const tabs = document.querySelectorAll('.works__tab');
@@ -69,23 +128,34 @@ function initMobileMenu() {
     });
 }
 
+function loadVideoSrc(video) {
+    if (video.dataset.src) {
+        video.src = video.dataset.src;
+        delete video.dataset.src;
+    }
+}
+
 function initVideoPlayers() {
-    document.querySelectorAll('.works__video-wrap').forEach(wrap => {
+    const wraps = document.querySelectorAll('.works__video-wrap');
+
+    wraps.forEach(wrap => {
         const video = wrap.querySelector('video');
         const overlay = wrap.querySelector('.works__play-overlay');
         if (!video || !overlay) return;
 
-        // Click to play/unmute, click again to pause/mute
+        // Click to unmute/focus, click again to stop back to ambient preview
         wrap.addEventListener('click', () => {
-            if (video.paused) {
-                // Pause all other videos first
-                document.querySelectorAll('.works__video-wrap video').forEach(v => {
-                    if (v !== video) {
-                        v.pause();
+            loadVideoSrc(video);
+            if (video.muted) {
+                // Focus this video with sound, revert any other focused video to ambient
+                wraps.forEach(w => {
+                    const v = w.querySelector('video');
+                    if (v && v !== video && !v.muted) {
                         v.muted = true;
-                        v.closest('.works__video-wrap').querySelector('.works__play-overlay').classList.remove('hidden');
+                        w.querySelector('.works__play-overlay').classList.remove('hidden');
                     }
                 });
+                video.currentTime = 0;
                 video.muted = false;
                 video.play();
                 overlay.classList.add('hidden');
@@ -95,6 +165,25 @@ function initVideoPlayers() {
                 overlay.classList.remove('hidden');
             }
         });
+    });
+
+    // Lazy-load + ambient muted preview: fetch and autoplay only once a video
+    // approaches the viewport (or its hidden tab becomes visible), pause when it leaves
+    const previewObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                loadVideoSrc(video);
+                if (video.paused && video.muted) video.play().catch(() => {});
+            } else if (video.muted) {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.4, rootMargin: '300px 0px' });
+
+    wraps.forEach(wrap => {
+        const video = wrap.querySelector('video');
+        if (video) previewObserver.observe(video);
     });
 }
 

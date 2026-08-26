@@ -3,17 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кирилл — Видеомонтаж, который удерживает внимание</title>
+    <meta name="theme-color" content="#000000">
+    <title>Scowy — Видеомонтаж, который удерживает внимание</title>
     <meta name="description" content="Профессиональный видеомонтаж для блогеров и брендов. Динамичный монтаж, который увеличивает просмотры и вовлечение.">
-    <meta property="og:title" content="Кирилл — Видеомонтаж">
+    <meta property="og:title" content="Scowy — Видеомонтаж">
     <meta property="og:description" content="Монтаж видео, которые удерживают внимание.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://scowy2.github.io/portfolio/assets/og-image.jpg">
+    <meta property="og:url" content="https://scowy2.github.io/portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scowy — Видеомонтаж">
+    <meta name="twitter:description" content="Монтаж видео, которые удерживают внимание.">
+    <meta name="twitter:image" content="https://scowy2.github.io/portfolio/assets/og-image.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Scowy — Видеомонтаж",
+        "description": "Профессиональный видеомонтаж для блогеров и брендов. Динамичный монтаж, который увеличивает просмотры и вовлечение.",
+        "url": "https://scowy2.github.io/portfolio/",
+        "image": "https://scowy2.github.io/portfolio/assets/og-image.jpg",
+        "areaServed": "Online",
+        "sameAs": ["https://t.me/Montro12"]
+    }
+    </script>
 </head>
 <body>
+    <!-- Ambient background -->
+    <div class="ambient-bg" aria-hidden="true">
+        <div class="ambient-bg__orb ambient-bg__orb--1"></div>
+        <div class="ambient-bg__orb ambient-bg__orb--2"></div>
+        <div class="ambient-bg__orb ambient-bg__orb--3"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav__container">
@@ -77,25 +104,25 @@
             <div class="works__grid works__grid--vertical active" id="vertical-works">
                 <div class="works__item" data-animate>
                     <div class="works__video-wrap">
-                        <video src="assets/work1.mp4" playsinline muted loop preload="metadata"></video>
+                        <video data-src="assets/work1.mp4" poster="assets/work1-poster.jpg" playsinline muted loop preload="none"></video>
                         <div class="works__play-overlay">
-                            <div class="works__play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></div>
+                            <button class="works__play-btn" aria-label="Воспроизвести со звуком"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></button>
                         </div>
                     </div>
                 </div>
                 <div class="works__item" data-animate>
                     <div class="works__video-wrap">
-                        <video src="assets/work2.mp4" playsinline muted loop preload="metadata"></video>
+                        <video data-src="assets/work2.mp4" poster="assets/work2-poster.jpg" playsinline muted loop preload="none"></video>
                         <div class="works__play-overlay">
-                            <div class="works__play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></div>
+                            <button class="works__play-btn" aria-label="Воспроизвести со звуком"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></button>
                         </div>
                     </div>
                 </div>
                 <div class="works__item" data-animate>
                     <div class="works__video-wrap">
-                        <video src="assets/work3.mp4" playsinline muted loop preload="metadata"></video>
+                        <video data-src="assets/work3.mp4" poster="assets/work3-poster.jpg" playsinline muted loop preload="none"></video>
                         <div class="works__play-overlay">
-                            <div class="works__play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></div>
+                            <button class="works__play-btn" aria-label="Воспроизвести со звуком"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -105,17 +132,17 @@
             <div class="works__grid works__grid--horizontal" id="horizontal-works" style="display: none;">
                 <div class="works__item" data-animate>
                     <div class="works__video-wrap works__video-wrap--horizontal">
-                        <video src="assets/work 1.mp4" playsinline muted loop preload="metadata"></video>
+                        <video data-src="assets/work1-h.mp4" poster="assets/work1-h-poster.jpg" playsinline muted loop preload="none"></video>
                         <div class="works__play-overlay">
-                            <div class="works__play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></div>
+                            <button class="works__play-btn" aria-label="Воспроизвести со звуком"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></button>
                         </div>
                     </div>
                 </div>
                 <div class="works__item" data-animate>
                     <div class="works__video-wrap works__video-wrap--horizontal">
-                        <video src="assets/work 2.mp4" playsinline muted loop preload="metadata"></video>
+                        <video data-src="assets/work2-h.mp4" poster="assets/work2-h-poster.jpg" playsinline muted loop preload="none"></video>
                         <div class="works__play-overlay">
-                            <div class="works__play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></div>
+                            <button class="works__play-btn" aria-label="Воспроизвести со звуком"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -254,6 +281,19 @@
         </div>
     </section>
 
+    <!-- Mid-page CTA -->
+    <section class="cta-band">
+        <div class="container">
+            <div class="cta-band__inner" data-animate>
+                <p class="cta-band__text">Хочешь такой же результат для своего контента?</p>
+                <a href="https://t.me/Montro12" target="_blank" rel="noopener" class="btn btn--primary">
+                    Обсудить проект
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Me -->
     <section class="why-me" id="why-me">
         <div class="container">
@@ -262,26 +302,46 @@
                 <h2 class="section-title">Почему выбирают меня</h2>
                 <p class="section-subtitle">Работаю с разными форматами видео — понимаю, как удерживать внимание и делать контент, который досматривают</p>
             </div>
-            <div class="why-me__grid">
-                <div class="why-me__card" data-animate>
-                    <div class="why-me__card-number">01</div>
-                    <h3 class="why-me__card-title">Быстрые сроки</h3>
-                    <p class="why-me__card-text">Чёткие дедлайны — без задержек и срыва сроков. Вы всегда знаете, когда получите готовый ролик.</p>
+            <div class="accordion">
+                <div class="accordion__item" data-animate>
+                    <button class="accordion__trigger">
+                        <span class="accordion__num">01</span>
+                        <span class="accordion__title">Быстрые сроки</span>
+                        <span class="accordion__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    </button>
+                    <div class="accordion__panel">
+                        <p class="accordion__text">Чёткие дедлайны — без задержек и срыва сроков. Вы всегда знаете, когда получите готовый ролик.</p>
+                    </div>
                 </div>
-                <div class="why-me__card" data-animate>
-                    <div class="why-me__card-number">02</div>
-                    <h3 class="why-me__card-title">Чистый монтаж</h3>
-                    <p class="why-me__card-text">Современная подача, плавные переходы и продуманный ритм. Никакой «кашицы» из эффектов.</p>
+                <div class="accordion__item" data-animate>
+                    <button class="accordion__trigger">
+                        <span class="accordion__num">02</span>
+                        <span class="accordion__title">Чистый монтаж</span>
+                        <span class="accordion__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    </button>
+                    <div class="accordion__panel">
+                        <p class="accordion__text">Современная подача, плавные переходы и продуманный ритм. Никакой «кашицы» из эффектов.</p>
+                    </div>
                 </div>
-                <div class="why-me__card" data-animate>
-                    <div class="why-me__card-number">03</div>
-                    <h3 class="why-me__card-title">В тренде</h3>
-                    <p class="why-me__card-text">Слежу за актуальными трендами монтажа, понимаю алгоритмы платформ и делаю контент, который продвигается.</p>
+                <div class="accordion__item" data-animate>
+                    <button class="accordion__trigger">
+                        <span class="accordion__num">03</span>
+                        <span class="accordion__title">В тренде</span>
+                        <span class="accordion__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    </button>
+                    <div class="accordion__panel">
+                        <p class="accordion__text">Слежу за актуальными трендами монтажа, понимаю алгоритмы платформ и делаю контент, который продвигается.</p>
+                    </div>
                 </div>
-                <div class="why-me__card" data-animate>
-                    <div class="why-me__card-number">04</div>
-                    <h3 class="why-me__card-title">Разные форматы</h3>
-                    <p class="why-me__card-text">Reels, Shorts, YouTube, TikTok — работаю со всеми форматами и адаптирую монтаж под каждую платформу.</p>
+                <div class="accordion__item" data-animate>
+                    <button class="accordion__trigger">
+                        <span class="accordion__num">04</span>
+                        <span class="accordion__title">Разные форматы</span>
+                        <span class="accordion__icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                    </button>
+                    <div class="accordion__panel">
+                        <p class="accordion__text">Reels, Shorts, YouTube, TikTok — работаю со всеми форматами и адаптирую монтаж под каждую платформу.</p>
+                    </div>
                 </div>
             </div>
         </div>
