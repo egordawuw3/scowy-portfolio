@@ -185,7 +185,7 @@ button{font-family:var(--font);cursor:pointer}
 /* ===== Footer ===== */
 .footer{padding:28px 0;border-top:1px solid var(--border)}
 .footer__content{text-align:center}
-.footer__copy{font-size:.78rem;color:var(--text-3)}
+.footer__copy{font-size:.78rem;color:rgba(255,255,255,.48)}
 
 /* ===== Scroll Animations ===== */
 [data-animate]{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
