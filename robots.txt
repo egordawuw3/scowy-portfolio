@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://scowy2.github.io/portfolio/sitemap.xml
+Sitemap: https://scowy-portfolio.pages.dev/sitemap.xml
