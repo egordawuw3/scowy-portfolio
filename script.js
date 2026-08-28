@@ -72,18 +72,14 @@ function initWorksTabs() {
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Remove active from all tabs
             tabs.forEach(t => t.classList.remove('active'));
-            // Add active to clicked tab
             tab.classList.add('active');
 
-            // Hide all grids
             document.querySelectorAll('.works__grid').forEach(grid => {
                 grid.style.display = 'none';
                 grid.classList.remove('active');
             });
 
-            // Pause all videos when switching tabs
             document.querySelectorAll('.works__video-wrap video').forEach(v => {
                 v.pause();
                 v.muted = true;
@@ -91,12 +87,10 @@ function initWorksTabs() {
                 if (overlay) overlay.classList.remove('hidden');
             });
 
-            // Show target grid
             const targetId = tab.getAttribute('data-target');
             const targetGrid = document.getElementById(`${targetId}-works`);
             if (targetGrid) {
                 targetGrid.style.display = 'grid';
-                // Trigger reflow for animation if needed
                 void targetGrid.offsetWidth;
                 targetGrid.classList.add('active');
             }
@@ -143,11 +137,9 @@ function initVideoPlayers() {
         const overlay = wrap.querySelector('.works__play-overlay');
         if (!video || !overlay) return;
 
-        // Click to load, play with sound, and focus this video; click again to stop
         wrap.addEventListener('click', () => {
             loadVideoSrc(video);
             if (video.muted) {
-                // Focus this video with sound, stop any other currently-playing video
                 wraps.forEach(w => {
                     const v = w.querySelector('video');
                     if (v && v !== video && !v.paused) {
