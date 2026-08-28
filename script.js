@@ -143,14 +143,15 @@ function initVideoPlayers() {
         const overlay = wrap.querySelector('.works__play-overlay');
         if (!video || !overlay) return;
 
-        // Click to unmute/focus, click again to stop back to ambient preview
+        // Click to load, play with sound, and focus this video; click again to stop
         wrap.addEventListener('click', () => {
             loadVideoSrc(video);
             if (video.muted) {
-                // Focus this video with sound, revert any other focused video to ambient
+                // Focus this video with sound, stop any other currently-playing video
                 wraps.forEach(w => {
                     const v = w.querySelector('video');
-                    if (v && v !== video && !v.muted) {
+                    if (v && v !== video && !v.paused) {
+                        v.pause();
                         v.muted = true;
                         w.querySelector('.works__play-overlay').classList.remove('hidden');
                     }
@@ -165,25 +166,6 @@ function initVideoPlayers() {
                 overlay.classList.remove('hidden');
             }
         });
-    });
-
-    // Lazy-load + ambient muted preview: fetch and autoplay only once a video
-    // approaches the viewport (or its hidden tab becomes visible), pause when it leaves
-    const previewObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                loadVideoSrc(video);
-                if (video.paused && video.muted) video.play().catch(() => {});
-            } else if (video.muted) {
-                video.pause();
-            }
-        });
-    }, { threshold: 0.4, rootMargin: '300px 0px' });
-
-    wraps.forEach(wrap => {
-        const video = wrap.querySelector('video');
-        if (video) previewObserver.observe(video);
     });
 }
 
